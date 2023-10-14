@@ -15,12 +15,24 @@
 </header>
 
 <section class="container mt-5">
-    <div class="row justify-content-around">
+    <div class="row justify-content-md-around">
         <div class="col-5">
             <div class="sectionBorder border w-100 border-primary" style="height: 350px">
-                <div id="display" class="border border-1, w-100" style="height: 340px"></div>
+                <div class="border border-1, w-100" id="display" style="height: 340px"></div>
             </div>
+        </div>
 
+        <div class="col-4 mt-5">
+            <form id="txtForm">
+                <div class="input-group-lg">
+                    <label class="form-label" for="fileString"><h3>Upload Picture</h3>
+                        <hr>
+                    </label>
+                    <input aria-describedby="inputGroup-sizing-lg" class="form-control mt-2" id="fileString"
+                           multiple name="fileString" type="file">
+                </div>
+                <button type="button" id="btnUpload" class="btn btn-outline-primary mt-3 btn-lg fw-bolder">Upload File</button>
+            </form>
         </div>
     </div>
 </section>

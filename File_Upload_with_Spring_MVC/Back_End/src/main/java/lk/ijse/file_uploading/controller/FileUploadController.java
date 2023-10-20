@@ -1,26 +1,34 @@
 package lk.ijse.file_uploading.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lk.ijse.file_uploading.dto.ImageDTO;
+import lk.ijse.file_uploading.service.FileUploadService;
+import lk.ijse.file_uploading.util.ResponseUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/uploads")
 public class FileUploadController {
+
+    @Autowired
+    private FileUploadService fileRepo;
 
     public FileUploadController() {
         System.out.println("Hi I am file uploader ");
     }
 
     @PostMapping
-    public String uploadFile() {
-        return "post method invoked";
+    public ResponseUtil uploadFile(@ModelAttribute ImageDTO dto) {
+        fileRepo.saveFileLocation(dto);
+        return new ResponseUtil("Ok","Successfully",null);
     }
 
-    @GetMapping
-    public String getAllDriver() {
-        return "Get method Invoked";
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping(path = "lastImageLoaded")
+
+    public ResponseUtil getAllDriver() {
+        return new ResponseUtil("OK", "Successfully Loaded. :", fileRepo.getLastImageLocation());
     }
 
 

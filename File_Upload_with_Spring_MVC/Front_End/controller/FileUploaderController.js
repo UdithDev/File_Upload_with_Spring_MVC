@@ -23,7 +23,7 @@ imageLoad();
 
 function imageLoad(){
     $.ajax({
-        url: baseUrl+"upload/lastImageLoad",
+        url: baseUrl+"uploads/lastImageLoad",
         method: 'get',
         success:function (resp){
             console.log(resp.data);
@@ -36,5 +36,5 @@ function imageLoad(){
         error:function (err){
             console.log(err);
         }
-    })
+    });
 }

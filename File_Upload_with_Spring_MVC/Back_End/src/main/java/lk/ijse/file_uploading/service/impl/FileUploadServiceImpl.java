@@ -38,8 +38,8 @@ public class FileUploadServiceImpl implements FileUploadService {
 
 
 
-        } catch (URISyntaxException | IOException e) {
-            e.printStackTrace();
+        } catch ( IOException |URISyntaxException e) {
+            throw new RuntimeException(e);
         }
         System.out.println(img);
         repo.save(img);

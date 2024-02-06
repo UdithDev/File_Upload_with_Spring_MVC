@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/uploads")
+@CrossOrigin(origins = "http://localhost:63342")
 public class FileUploadController {
 
     @Autowired
@@ -25,8 +26,7 @@ public class FileUploadController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @GetMapping(path = "lastImageLoaded")
-
+    @GetMapping(path = "/lastImageLoaded")
     public ResponseUtil getAllDriver() {
         return new ResponseUtil("OK", "Successfully Loaded. :", fileRepo.getLastImageLocation());
     }
